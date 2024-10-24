@@ -8,13 +8,17 @@ import PatientDetails from './components/Patient/PatientDetails.jsx'
 import Login from './components/login/Login.jsx'
 import Signup from './components/Landing/Landing.jsx'
 import { AuthProvider } from './store/auth.jsx'
+import {Provider} from 'react-redux'
+import { store } from './store/store.js'
 
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <AuthProvider>
-  <React.StrictMode>
-     <App/>         
-  </React.StrictMode>
-  </AuthProvider>,
+    <Provider store={store}>
+    <React.StrictMode>
+      <App/>         
+    </React.StrictMode>
+  </Provider>
+  </AuthProvider>, 
 )

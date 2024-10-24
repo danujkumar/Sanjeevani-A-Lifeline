@@ -16,6 +16,7 @@ const Profile = () => {
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
+  //Function will be created in the redux where we will call the function to get information from the redux store
   const doctor = [
     {
       name: "Sourav",
@@ -25,71 +26,9 @@ const Profile = () => {
 
       disease: "Neuroscience",
       src: "./Images/YoungMan.png",
-    },
-    {
-      name: "Sourav",
-      lastname: "Kumar",
-      date: "17/12/2001",
-      time: "11 AM",
-
-      disease: "Neuroscience",
-      src: "./Images/YoungMan.png",
-    },
-    {
-      name: "Sourav",
-      lastname: "Kumar",
-      date: "17/12/2001",
-      time: "11 AM",
-
-      disease: "Neuroscience",
-      src: "./Images/YoungMan.png",
-    },
-    {
-      name: "Sourav",
-      lastname: "Kumar",
-      date: "17/12/2001",
-      time: "11 AM",
-
-      disease: "Neuroscience",
-      src: "./Images/YoungMan.png",
-    },
-    {
-      name: "Sourav",
-      //   lastname: "Kumar",
-      date: "17/12/2001",
-      time: "11 AM",
-
-      disease: "Neuroscience",
-      src: "./Images/YoungMan.png",
-    },
-    {
-      name: "Sourav",
-      lastname: "Kumar",
-      date: "17/12/2001",
-      time: "11 AM",
-
-      disease: "Neuroscience",
-      src: "./Images/YoungMan.png",
-    },
-    {
-      name: "Yashraj",
-      lastname: "Kumar",
-      date: "17/12/2001",
-      time: "11 AM",
-
-      disease: "Cardiology",
-      src: "./Images/YoungMan.png",
-    },
-    {
-      name: "Tathagat",
-      lastname: "Kumar",
-      date: "17/12/2001",
-      time: "11 AM",
-
-      disease: "Surgeon",
-      src: "./Images/YoungMan.png",
-    },
+    }
   ];
+
   return (
     <>
       <DocNav />
