@@ -2,7 +2,9 @@ import {combineReducers} from 'redux'
 import docReducer from './docReducer'
 import userReducer from './userReducer' 
 
-export default reducers = combineReducers({
+const reducers = combineReducers({
     doc: docReducer,
     patient: userReducer
 })
+
+export default reducers;

@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DocNav from "./DocNav";
 import { Popover, Typography, useRadioGroup } from "@mui/material";
-import { useAuth } from "../../store/auth";
-const Profile = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+import { useDispatch, useSelector } from "react-redux";
+import { bindActionCreators } from "redux";
+import { action } from "../../store";
 
-  const {user} = useAuth();
+const Profile = () => {
+  const dispatch  = useDispatch()
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [doc, setDoc] = useState({})
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -17,6 +21,16 @@ const Profile = () => {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
   //Function will be created in the redux where we will call the function to get information from the redux store
+  
+  const docprofile = useSelector(state => state.docprofile)
+
+  // setDoc(docprofile);
+
+  useEffect(()=>{
+    console.log(docprofile);
+    dispatch(action.getDocInfo(token))
+  },[docprofile])
+
   const doctor = [
     {
       name: "Sourav",
@@ -43,17 +57,17 @@ const Profile = () => {
               ></img>
             </div>
             <div className="flex justify-center p-3 font-bold font-serif">
-              Dr. {user.name}
+              Dr
             </div>
             <div className="flex justify-center p-3 font-thin font-serif text-gray-500">
               MBBS, MS, MD, PhD
             </div>
             <div className="flex justify-center p-3 font-bold font-serif">
               <span className="font-thin">ID-</span>
-              <b>{user.username}</b>
+              <b></b>
             </div>
             <div className="flex justify-center p-3  font-serif ">
-              {user.specialization}
+              
             </div>
             <div className="flex justify-center">
               <button className="bg-blue-900 text-2xl text-white p-3 rounded-3xl font-bold " onClick={()=>{
