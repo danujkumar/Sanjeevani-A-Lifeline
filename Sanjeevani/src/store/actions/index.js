@@ -50,3 +50,32 @@ export const getDocApproval = (token)=> {
         })
     }
 } 
+
+export const getDocList = ()=>{
+    return async (dispatch) => {
+        dispatch({
+            type:"DOC_LIST_FETCHING",
+            payload:{
+                info:"Fetching doctor lists..."
+            }
+        })
+        let url = "http://localhost:3000/doctor";
+        
+        const response = await fetch(url, {
+            method:"GET",
+        })
+
+        if(response.ok){
+            const data = await response.json();
+            dispatch({
+                type:"DOC_PROFILE_LIST_FETCHED",
+                payload:data
+            })
+        }else{
+            dispatch({
+                type:"DOC_PROFILE_LIST_FAILURE",
+                payload:{error:"Fail to fetch"}
+            })
+        }
+    }
+}
