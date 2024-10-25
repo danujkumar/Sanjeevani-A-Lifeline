@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, TextField } from "@mui/material";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 const Booking = () => {
   const [selectedDate, setSelectedDate] = useState(null);
+  const location = useLocation();
+  const details = useSelector((state) => state.details)
 
+  useEffect(() => {
+    console.log(details)
+  }, [details])
+  
+  const data = location.state;
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
@@ -32,7 +41,7 @@ const Booking = () => {
           </div>
         </div>
         <div className="text-white text-5xl p-2 font-serif">
-          Radhika Vishwanatham
+          {data.name}
         </div>
       </div>
       <div className="flex flex-row justify-between">
@@ -45,6 +54,7 @@ const Booking = () => {
                   label="User Name"
                   color="secondary"
                   placeholder="Enter the User Name"
+                  value={details.info.name != null ? details.info.name : ""}
                   focused
                 />
               </div>
@@ -85,9 +95,14 @@ const Booking = () => {
               <Button
                 className=" rounded-3xl"
                 variant="contained"
-                href="#contained-buttons"
               >
                 Book Now
+              </Button>
+              <Button
+                className=" rounded-3xl"
+                variant="contained"
+              >
+                Chat with Us
               </Button>
             </div>
             <div>

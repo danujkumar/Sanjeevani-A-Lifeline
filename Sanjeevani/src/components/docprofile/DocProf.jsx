@@ -2,12 +2,13 @@ import React from "react";
 import { Button, Popover, Rating, Stack, Typography } from "@mui/material";
 import Reviews from "./Reviews";
 import Booking from "../Booking/Booking";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const DocProf = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const location = useLocation();
   const data = location.state;
+  const navigate = useNavigate();
 
   console.log(data)
 
@@ -47,9 +48,7 @@ const DocProf = () => {
               <Button
                 className=" rounded-3xl"
                 variant="contained"
-                href="#contained-buttons"
-
-                onClick={()=>{window.location.href = '/Book-your-doctor';}}
+                onClick={()=>{navigate("/Book-your-doctor", {state:data}) }}
               >
                 Book Now
               </Button>

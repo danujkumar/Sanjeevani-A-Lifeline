@@ -79,3 +79,38 @@ export const getDocList = ()=>{
         }
     }
 }
+
+export const getUserInfo = ()=> {
+    return async (dispatch) => {
+        dispatch({
+            type:"USER_FETCHING",
+            payload:{
+                info:"Fetching doctor profile..."
+            }
+        })
+        const token = localStorage.getItem("token");
+        let url = "http://localhost:3000/profile";
+        if (localStorage.getItem("doctor") === 'true') {
+            url = "http://localhost:3000/doctor/profile";
+        }
+        const response = await fetch(url, {
+            method:"GET",
+            headers:{
+                Authorization: `Bearer ${token}`
+            }
+        })
+
+        if(response.ok){
+            const data = await response.json();
+            dispatch({
+                type:"USER_PROFILE_FETCHED",
+                payload:data
+            })
+        }else{
+            dispatch({
+                type:"USER_PROFILE_FAILURE",
+                payload:{error:"Fail to fetch user"}
+            })
+        }
+    }
+}
