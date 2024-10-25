@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 
 function Docarray() {
@@ -10,6 +11,8 @@ function Docarray() {
   useEffect(() => {
     setCard(listofDoc.info)
   }, [listofDoc])
+
+  const navigate = useNavigate()
 
   return (
     <>
@@ -43,7 +46,7 @@ function Docarray() {
                   className="sm:size-8 size-5 hover:cursor-pointer"
                   src="./Images/arrow.png"
                   onClick={() => {
-                    window.location.href = "/Doctors";
+                    navigate("/Doctors", {state:details})
                   }}
                 />
               </div>

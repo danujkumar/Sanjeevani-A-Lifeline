@@ -9,25 +9,7 @@ const Reviews = () => {
       review: "Sare doctor acche h kisi se bhi ilaj krwa le",
       rating: 1,
       img: "./Doctor.png",
-    },
-    {
-      name: "Yashraj Srivastava",
-      review: "Sare doctor acche h kisi se bhi ilaj krwa le",
-      rating: 4,
-      img: "./Doctor.png",
-    },
-    {
-      name: "Tathagat Sahay",
-      review: "Sare doctor acche h kisi se bhi ilaj krwa le",
-      rating: 4,
-      img: "./Doctor.png",
-    },
-    {
-      name: "Sourav Kumar",
-      review: "Sare doctor acche h kisi se bhi ilaj krwa le",
-      rating: 3,
-      img: "./Doctor.png",
-    },
+    }
   ];
 
   return (
