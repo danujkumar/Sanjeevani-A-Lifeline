@@ -56,17 +56,17 @@ const Profile = () => {
               ></img>
             </div>
             <div className="flex justify-center p-3 font-bold font-serif">
-              Dr. {doc.name}
+              {doc.name === "" ? "Not Found" : `Dr. ${doc.name}`}
             </div>
             <div className="flex justify-center p-3 font-thin font-serif text-gray-500">
-              Specilization- {doc.specialization}
+              Specilization- {doc.specialization === "" ? "Not specified" : doc.specialization}
             </div>
             <div className="flex justify-center p-3 font-bold font-serif">
-              <span className="font-thin">ID- {doc.username}</span>
+              <span className="font-thin">ID- {doc.username === "" ? "Not found" : doc.username}</span>
               <b></b>
             </div>
             <div className="flex justify-center p-3  font-serif ">
-              Workplace- {doc.workplace}
+              Workplace- {doc.workplace === "" ? "Not revealed" : doc.workplace}
             </div>
             <div className="flex justify-center">
               <button className="bg-blue-900 text-2xl text-white p-3 rounded-3xl font-bold " onClick={()=>{

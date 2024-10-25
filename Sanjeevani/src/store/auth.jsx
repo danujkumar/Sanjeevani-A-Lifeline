@@ -11,13 +11,17 @@ export const AuthProvider = ({ children }) => {
 
   const dispatch  = useDispatch()
 
+  const storeToken = (serverToken) => {
+    return localStorage.setItem("token", serverToken);
+  };
+
   useEffect(()=>{
     console.log("fetching the profile from redux")
     dispatch(action.getDocInfo())
   }, [])
 
   return (
-    <AuthContext.Provider>
+    <AuthContext.Provider value={{storeToken}}>
       {children}
     </AuthContext.Provider>
   );
