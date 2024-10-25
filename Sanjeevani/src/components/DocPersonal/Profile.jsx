@@ -6,9 +6,7 @@ import { bindActionCreators } from "redux";
 import { action } from "../../store";
 
 const Profile = () => {
-  const dispatch  = useDispatch()
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [token, setToken] = useState(localStorage.getItem("token"));
   const [doc, setDoc] = useState({})
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -22,15 +20,6 @@ const Profile = () => {
   const id = open ? "simple-popover" : undefined;
   //Function will be created in the redux where we will call the function to get information from the redux store
   
-  const docprofile = useSelector(state => state.docprofile)
-
-  // setDoc(docprofile);
-
-  useEffect(()=>{
-    console.log(docprofile);
-    dispatch(action.getDocInfo(token))
-  },[docprofile])
-
   const doctor = [
     {
       name: "Sourav",
@@ -42,6 +31,16 @@ const Profile = () => {
       src: "./Images/YoungMan.png",
     }
   ];
+  
+  
+  const profile = useSelector((state) => state.doc);
+
+  useEffect(()=>{
+    console.log(profile)
+    setDoc(profile.info)
+  },[profile])
+
+  
 
   return (
     <>
@@ -57,17 +56,17 @@ const Profile = () => {
               ></img>
             </div>
             <div className="flex justify-center p-3 font-bold font-serif">
-              Dr
+              Dr. {doc.name}
             </div>
             <div className="flex justify-center p-3 font-thin font-serif text-gray-500">
-              MBBS, MS, MD, PhD
+              Specilization- {doc.specialization}
             </div>
             <div className="flex justify-center p-3 font-bold font-serif">
-              <span className="font-thin">ID-</span>
+              <span className="font-thin">ID- {doc.username}</span>
               <b></b>
             </div>
             <div className="flex justify-center p-3  font-serif ">
-              
+              Workplace- {doc.workplace}
             </div>
             <div className="flex justify-center">
               <button className="bg-blue-900 text-2xl text-white p-3 rounded-3xl font-bold " onClick={()=>{

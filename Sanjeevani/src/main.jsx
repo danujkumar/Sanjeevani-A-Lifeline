@@ -14,11 +14,11 @@ import { store } from './store/store.js'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  <Provider store={store}>
   <AuthProvider>
-    <Provider store={store}>
     <React.StrictMode>
       <App/>         
     </React.StrictMode>
-  </Provider>
-  </AuthProvider>, 
+  </AuthProvider>
+  </Provider>, 
 )
