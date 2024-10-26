@@ -20,15 +20,15 @@ const ActiveSlider = () => {
   }, [listofDoc])
 
   return (
-    <div className="flex items-center justify-center flex-col h-[600px] bg-white">
-      <Swiper
+    <div className="flex flex-row items-center justify-center gap-x-4 h-[600px] bg-white flex-wrap">
+        <Swiper
         breakpoints={{
           340: {
             slidesPerView: 2,
             spaceBetween: 15,
           },
           700: {
-            slidesPerView: 4,
+            slidesPerView: 2,
             spaceBetween: 16,
           },
         }}
@@ -36,10 +36,9 @@ const ActiveSlider = () => {
         pagination={{
           clickable: true,
         }}
-        modules={[FreeMode, Pagination]}
-        className="max-w-[90%] lg:max-w-[80%]"
-      >
-        
+        modules={[Pagination]}
+        // className="max-w-[90%] lg:max-w-[80%]"
+        >
         {card.map((item) => (
           <SwiperSlide>
             <div className="flex flex-col gap-8 mb-20 group relative shadow-lg text-white rounded-xl 
@@ -59,9 +58,9 @@ const ActiveSlider = () => {
               <RxArrowTopRight className="absolute bottom-5 left-5 text-white group-hover:text-blue-500 
               group-hover:rotate-45 duration-100" />
             </div>
-          </SwiperSlide>
+            </SwiperSlide>
         ))}
-      </Swiper>
+        </Swiper>
     </div>
   );
 };

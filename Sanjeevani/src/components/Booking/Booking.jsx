@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Progress } from "@material-tailwind/react";
 
 const Booking = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -87,6 +88,18 @@ const Booking = () => {
                   multiline
                   variant="filled"
                 />
+
+              <Button
+                className=" rounded-3xl"
+                variant="contained"
+              >
+                Upload PDF
+              </Button>
+
+              <div className="text-black text-2xl p-2 font-serif">
+          0%
+        </div>
+
               </div>
             </div>
           </div>
@@ -99,7 +112,7 @@ const Booking = () => {
                 Book Now
               </Button>
               <Button
-                className=" rounded-3xl"
+                className="rounded-3xl"
                 variant="contained"
               >
                 Chat with Us
