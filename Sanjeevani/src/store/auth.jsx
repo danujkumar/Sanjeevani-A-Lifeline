@@ -18,6 +18,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(()=>{
     console.log("fetching the profile from redux")
     dispatch(action.getDocInfo())
+    dispatch(action.getUserInfo());
   }, [])
 
   return (

@@ -1,20 +1,29 @@
-const UserInfo = (state = {}, action) => {
-    if(action.type == 'docinfo')
-        {
-            //api will be called here to update the state and to get the info of currently logged doctor
+const initialState = {
+    info:[],
+    error:null
+}
+
+const UserInfo = (state = initialState, action) => {
+    switch(action.type)
+    {
+      case 'DOC_LIST_FETCHING':
+        return initialState
+      case 'DOC_PROFILE_LIST_FETCHED':
+        return {
+          ...state,
+          info:action.payload,
+          error:null,
         }
-        else if (action.type == 'docappoint')
-        {
-            //api will be called here to update the state and to get the approved appointments
+      case 'DOC_PROFILE_LIST_FAILURE':
+        return {
+          ...state,
+          error:action.payload,
+          info:null,
         }
-        else if (action.type == 'docapprov')
-        {
-            //to get non-approval list
-        }
-        else
-        {
-            return state;
-        }
+      default:
+        return state
+    }
+
 }
 
 export default UserInfo

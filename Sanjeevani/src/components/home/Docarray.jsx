@@ -1,32 +1,18 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 
 function Docarray() {
-  const doctor = [
-    {
-      name: "Sourav",
-      lastname: "Kumar",
-      specialist: "Neuroscience",
-      src: "./Doctor.png",
-    },
-    {
-      name: "Yash",
-      lastname: "Kumar",
-      specialist: "Cardiology",
-      src: "./Doctor.png",
-    },
-    {
-      name: "Tathagat",
-      lastname: "Kumar",
-      specialist: "Surgeon",
-      src: "./Doctor.png",
-    },
-    {
-      name: "Priya",
-      lastname: "Kumar",
-      specialist: "Gynecologist",
-      src: "./Doctor.png",
-    },
-  ];
+
+  const listofDoc = useSelector((state) => state.patient)
+  const [card, setCard] = useState([]);
+  
+  useEffect(() => {
+    setCard(listofDoc.info)
+  }, [listofDoc])
+
+  const navigate = useNavigate()
 
   return (
     <>
@@ -35,7 +21,7 @@ function Docarray() {
           <img className="size-[20%]" src="./Images/doctorsnearyou.png" />
         </div>
         <div className="flex flex-col mb-10">
-          {doctor.map((details) => (
+          {card.map((details) => (
             <div
               className="shadow-xl bg-white shadow-slate-400 border-b-4 border-blue-950 rounded-3xl mb-5 ml-[12%] mr-10 p-5 w-3/4 flex flex-row items-center"
               key={details.name}
@@ -43,7 +29,7 @@ function Docarray() {
               <div className="size-20 mr-5 rounded-3xl overflow-hidden">
                 <img
                   className="w-full h-full object-cover"
-                  src={details.src}
+                  src={`./Doctor.png`}
                   alt="No image"
                 />
               </div>
@@ -52,7 +38,7 @@ function Docarray() {
                   {details.name}
                 </div>
                 <div className="mr-10 sm:text-3xl text-sm text-gray-500">
-                  {details.specialist}{" "}
+                  {details.specialization}{" "}
                 </div>
               </div>
               <div className="flex-shrink-0">
@@ -60,7 +46,7 @@ function Docarray() {
                   className="sm:size-8 size-5 hover:cursor-pointer"
                   src="./Images/arrow.png"
                   onClick={() => {
-                    window.location.href = "/Doctors";
+                    navigate("/Doctors", {state:details})
                   }}
                 />
               </div>
