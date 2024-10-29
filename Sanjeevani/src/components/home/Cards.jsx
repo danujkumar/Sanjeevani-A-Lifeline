@@ -31,6 +31,7 @@ const ActiveSlider = () => {
         className="max-w-[90%] lg:max-w-[80%]"
       >
         {ServiceData.map((item) => (
+          
           <SwiperSlide key={item.title}>
             <div className="flex flex-col gap-8 mb-20 group relative shadow-lg text-white rounded-xl 
             px-6 py-8 lg:h-[320px] lg:w-[250px] overflow-hidden cursor-pointer">
@@ -51,6 +52,7 @@ const ActiveSlider = () => {
               group-hover:rotate-45 duration-100" />
             </div>
           </SwiperSlide>
+
         ))}
       </Swiper>
     </div>
